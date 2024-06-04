@@ -1,26 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <header class="my-4 text-center">
+      <h1>Movie Visualizer</h1>
+    </header>
+    <div class="row">
+      <div class="col-md-6">
+        <PieChart />
+      </div>
+      <div class="col-md-6">
+        <BarChart />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PieChart from './components/PieChart.vue';
+import BarChart from './components/BarChart.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    PieChart,
+    BarChart,
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+header h1 {
+  color: #343a40;
+}
+
+.row {
+  margin-top: 20px;
 }
 </style>

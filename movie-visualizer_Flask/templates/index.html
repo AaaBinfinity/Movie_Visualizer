@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Visualizer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Welcome to the Movie Visualizer</h1>
-    <p>Use the API endpoints to view the charts.</p>
+    <div class="container text-center">
+        <div class="jumbotron mt-5">
+            <h1 class="display-4">Welcome to the Movie Visualizer</h1>
+            <p class="lead">Use the API endpoints to view the charts.</p>
+            <hr class="my-4">
+            <p>Access the charts using the following endpoints:</p>
+            <ul class="list-unstyled">
+                <li><a href="/api/genres/pie-chart" class="btn btn-primary btn-lg">Pie Chart</a></li>
+                <li><a href="/api/genres/bar-chart" class="btn btn-secondary btn-lg">Bar Chart</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
