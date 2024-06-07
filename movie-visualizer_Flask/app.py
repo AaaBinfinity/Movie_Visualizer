@@ -1,20 +1,24 @@
-from flask import Flask, jsonify, send_file
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import io
 
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+from flask import Flask, jsonify, send_file
+
 app = Flask(__name__)
+
 
 # 读取数据
 def read_data():
     df = pd.read_csv('data/movies.csv')
     return df
 
+
 # 计算类型总数
 def calculate_genre_counts(df):
     genres = df['genres'].str.split('|').explode().value_counts()
     return genres
+
 
 # 生成图表
 def generate_pie_chart(genres):
@@ -29,6 +33,7 @@ def generate_pie_chart(genres):
     buf.seek(0)
     return buf
 
+
 def generate_bar_chart(genres):
     plt.figure(figsize=(10, 6))
     sns.set(style="whitegrid")
@@ -42,11 +47,13 @@ def generate_bar_chart(genres):
     buf.seek(0)
     return buf
 
+
 @app.route('/api/genres', methods=['GET'])
 def genres():
     df = read_data()
     genres = calculate_genre_counts(df)
     return jsonify(genres.to_dict())
+
 
 @app.route('/api/genres/pie-chart', methods=['GET'])
 def pie_chart():
@@ -55,12 +62,14 @@ def pie_chart():
     buf = generate_pie_chart(genres)
     return send_file(buf, mimetype='image/png')
 
+
 @app.route('/api/genres/bar-chart', methods=['GET'])
 def bar_chart():
     df = read_data()
     genres = calculate_genre_counts(df)
     buf = generate_bar_chart(genres)
     return send_file(buf, mimetype='image/png')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -153,7 +153,6 @@ def predict_score(user_rate, user_id, movie_ID, cos_sim, movieid):
     return pre_score
 
 
-
 if __name__ == "__main__":
     r = get_rating()
     user_rate, user_movie = get_user(r)
