@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 def get_rating():  # 读取ratings中的评分信息
-    f = open('ratings.csv')
+    f = open('data/ratings.csv')
     ratings = f.readlines()
     f.close()
     r = []
@@ -45,7 +45,7 @@ def get_user(r):
 
 
 def get_movie_info():
-    data = pd.read_csv("movies.csv")
+    data = pd.read_csv("data/movies.csv")
     moviesID = data['movieId']
     titles = data['title']
     tags_raw = data['genres']
@@ -169,7 +169,7 @@ if __name__ == "__main__":
             print('{0:6}\t{1:.6f}\t{2:65}\t{3}'.format(movie_info[j][0], recommend_list[i][0], movie_info[j][1],
                                                        movie_info[j][2]))
     else:
-        test_data = pd.read_csv("test_set.csv")
+        test_data = pd.read_csv("data/test_set.csv")
         usersid = test_data['userId']
         moviesid = test_data['movieId']
         rating = test_data['rating']
